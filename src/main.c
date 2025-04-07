@@ -1,5 +1,5 @@
 #define LINKED_LIST_IMPLEMENTATION
-#include "linkedlist.h"
+#include "../include/circular_list.h"
 #include <stdio.h>
 
 void print_int(int value) {
@@ -19,25 +19,26 @@ bool char_cmp(char a, char b) {
 }
 
 int main() {
-    List_int* nums = list_int_create();
-    list_int_append(nums, 10);
-    list_int_append(nums, 20);
-    
-    printf("Lista: ");
-    list_int_print(nums, print_int); // Usar función concreta para evitar errores
-    
-    list_int_destroy(nums);
-    
-    List_char *chars = list_char_create();
-    list_char_append(chars, 'a');
-    list_char_append(chars, 'b');
-    list_char_append(chars, 'c');
-    list_char_append(chars, 'd');
-    list_char_append(chars, 'e');
+    // Lista circular de enteros
+    CircularList_int* nums = circular_list_int_create();
+    circular_list_int_append(nums, 10);
+    circular_list_int_append(nums, 20);
 
-    printf("Lista: ");
-    list_char_print(chars, print_char);
+    printf("Lista circular de enteros: ");
+    circular_list_int_print(nums, print_int);
 
-    list_char_destroy(chars);
-    return 0;
-}
+    circular_list_int_destroy(nums);
+
+    // Lista circular de caracteres
+    CircularList_char* chars = circular_list_char_create();
+    circular_list_char_append(chars, 'a');
+    circular_list_char_append(chars, 'b');
+    circular_list_char_append(chars, 'c');
+    circular_list_char_append(chars, 'd');
+    circular_list_char_append(chars, 'e');
+
+    printf("Lista circular de caracteres: ");
+    circular_list_char_print(chars, print_char);
+
+    circular_list_char_destroy(chars);
+    return 0; }
